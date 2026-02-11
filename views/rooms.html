@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Chat app - Join</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f2f4f8;
+    }
+
+    .container{
+      max-width:600px;
+      margin:50px auto;
+    }
+
+    .card{
+      background:#fff;
+      border-radius:10px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+      overflow:hidden;
+    }
+
+    .card-header{
+      background:#1f5b7a;
+      color:#fff;
+      text-align:center;
+      padding:18px;
+      font-size:32px;
+      font-weight:bold;
+    }
+
+    .card-body{
+      padding:25px;
+    }
+
+    .form-group{
+      margin-bottom:18px;
+    }
+
+    label{
+      font-weight:bold;
+      display:block;
+      margin-bottom:6px;
+    }
+
+    input, select{
+      width:100%;
+      padding:10px;
+      border:1px solid #ccc;
+      border-radius:4px;
+      font-size:15px;
+    }
+
+    .btn{
+      width:100%;
+      padding:12px;
+      border:2px solid #1f5b7a;
+      background:#fff;
+      color:#1f5b7a;
+      font-weight:bold;
+      font-size:16px;
+      cursor:pointer;
+      border-radius:4px;
+    }
+
+    .btn:hover{
+      background:#1f5b7a;
+      color:#fff;
+    }
+
+    .msg{
+      margin-top:10px;
+      color:red;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+
+      <div class="card-header">
+        Chat app
+      </div>
+
+      <div class="card-body">
+
+        <div class="form-group">
+          <label>Username</label>
+          <input id="username" placeholder="e.g., pritamworld">
+        </div>
+
+        <div class="form-group">
+          <label>Room</label>
+          <select id="room">
+            <option value="devops">devops</option>
+            <option value="cloud computing">cloud computing</option>
+            <option value="covid19">covid19</option>
+            <option value="sports">sports</option>
+            <option value="nodeJS">nodeJS</option>
+          </select>
+        </div>
+
+        <button class="btn" id="joinBtn">
+          Join Chat Room
+        </button>
+
+        <p class="msg" id="msg"></p>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
+    if (!user){
+      window.location.href="/login";
+    }
+
+    document.getElementById("username").value = user.username || "";
+
+    document.getElementById("joinBtn").onclick = () => {
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const room =
+        document.getElementById("room").value;
+
+      if(!username){
+        document.getElementById("msg").innerText =
+          "Username required";
+        return;
+      }
+
+      localStorage.setItem("room", room);
+      window.location.href="/chat";
+    };
+
+  </script>
+
+</body>
+</html>
