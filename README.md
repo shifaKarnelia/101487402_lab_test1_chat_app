@@ -1,5 +1,5 @@
 # 101487402_lab_test1_chat_app
-# 101487402 Lab Test 1 – Chat Application
+
 
 ## Description
 This is a real-time chat application built using Node.js, Express, Socket.io, and MongoDB Atlas.  
