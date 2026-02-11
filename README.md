@@ -25,6 +25,6 @@ MONGO_URI=your_mongodb_connection_string
 ## Run the server
 node server.js
 
-## on browser
+## on browser open
 
 http://localhost:3000
